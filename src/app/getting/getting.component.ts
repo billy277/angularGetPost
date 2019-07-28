@@ -8,6 +8,7 @@ import { HttpService } from '../http.service';
 })
 export class GettingComponent implements OnInit {
   getData;
+  url = "http://localhost:3000/data"
   constructor(private httpService: HttpService) { }
 
 
@@ -17,7 +18,7 @@ export class GettingComponent implements OnInit {
   }
 
   _buttonClick(){
-    return this.httpService._getRequest().subscribe((data)=>{
+    return this.httpService._getRequest(this.url).subscribe((data)=>{
       this.getData = data;
       console.log(this.getData);
     });  

@@ -10,14 +10,14 @@ export class PostingComponent implements OnInit {
 
   constructor(private httpService: HttpService) {}
    postingData;
-
+   url = "http://localhost:3000/data"
   ngOnInit() {
   }
 
 
   _buttonClick(){
     console.log("inside button click for post");
-    this.httpService._postRequest(this.postingData);
+    this.httpService._postRequest(this.url, this.postingData);
   }
 
   onClickSubmit(formData){
@@ -25,5 +25,10 @@ export class PostingComponent implements OnInit {
     this.postingData = {"data": formData.input}
 
   }
+
+//  _patchEntry(formData){
+//   alert('this is the data that will be patched in the Posting Data Variable: ' + formData.input)
+//   this.httpService._patchRequest(this.url,formData.index,formData.input)
+//  }
 
 }
