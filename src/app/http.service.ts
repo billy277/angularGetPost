@@ -27,13 +27,13 @@ export class HttpService {
      
    }
 
-   _putRequest(url, obj){
-     return this.httpClient.put(url,obj).subscribe(data=>{
-       console.log("PUT Request is sucessful ", data);
-     }, error=>{
-       console.log("Put error", error);
-     });
-   }
+  //  _putRequest(url, obj){
+  //    return this.httpClient.put(url,obj).subscribe(data=>{
+  //      console.log("PUT Request is sucessful ", data);
+  //    }, error=>{
+  //      console.log("Put error", error);
+  //    });
+  //  }
    
    _patchRequest(url,index,obj){
       var urlObj = url + '/'+index 

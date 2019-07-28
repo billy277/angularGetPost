@@ -14,9 +14,17 @@ export class GettingComponent implements OnInit {
 
 
   ngOnInit() {
-      
+    console.log("ngOninit has fired");
+    this._buttonClick();
+  }
+  
+  ngOnChanges(){
+    console.log("ngOnChanges has fired");
+    this._buttonClick();
+
   }
 
+  
   _buttonClick(){
     return this.httpService._getRequest(this.url).subscribe((data)=>{
       this.getData = data;
