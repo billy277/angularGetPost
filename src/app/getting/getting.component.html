@@ -1,1 +1,6 @@
 <p>getting works!</p>
+<div *ngFor = "let article of getData" >
+    <p>{{article.data}}</p>
+</div>
+
+<button (click)="_buttonClick()">post data</button>
