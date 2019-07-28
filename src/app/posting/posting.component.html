@@ -1,1 +1,8 @@
 <p>posting works!</p>
+<form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
+    <input type = "text" name = "input" placeholder = "input" ngModel>
+    <br/>
+ 
+    <input type = "submit" value = "submit">
+  </form>
+<button (click)="_buttonClick()">PostData</button>

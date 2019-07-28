@@ -10,9 +10,14 @@ export class HttpService {
     
    }
    _getRequest(){
+     console.log("inside _getRequest()")
      return this.httpClient.request("GET","http://localhost:3000/data",{responseType:"json"});
    }
+  
    _postRequest(obj){
+    console.log(
+      "inside _post request"
+    )
      return this.httpClient.post( "http://localhost:3000/data",obj).subscribe(data => {console.log("POST was sucessful", data)}, error=>{console.log("Error", error)});
      
    }

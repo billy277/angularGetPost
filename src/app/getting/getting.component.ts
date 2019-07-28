@@ -13,17 +13,13 @@ export class GettingComponent implements OnInit {
 
 
   ngOnInit() {
-    this.httpService._getRequest().subscribe((data)=>{
-      console.log("inside the subscribe method");
-      console.log(data);
-      this.getData = data;
-      console.log("logging the data from getData")
-      console.log(this.getData);
-    });   
+      
   }
+
   _buttonClick(){
-    this.httpService._postRequest({"data": "testing2"});  
-
+    return this.httpService._getRequest().subscribe((data)=>{
+      this.getData = data;
+      console.log(this.getData);
+    });  
   }
-
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-posting',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService) {}
+   postingData;
 
   ngOnInit() {
+  }
+
+
+  _buttonClick(){
+    console.log("inside button click for post");
+    this.httpService._postRequest(this.postingData);
+  }
+
+  onClickSubmit(formData){
+    alert('this is the data that will be stored in the Posting Data Variable: ' + formData.input)
+    this.postingData = {"data": formData.input}
+
   }
 
 }
