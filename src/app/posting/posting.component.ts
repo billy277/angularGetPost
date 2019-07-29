@@ -46,10 +46,11 @@ export class PostingComponent implements OnInit {
 //this is the function that fires when the submit button is clicked
   onClickSubmit(formData){
     // alert('data has been pushed into the postingData variable inside the component');
-    this.postingData = [{"id":1,"data": formData.content}];
+    this.postingData = {"data": formData.content};
     console.log(this.postingData);
     // alert("now the _buttonClick function in the posting component is being called");
     this._buttonClick();
+    this._buttonClick2();
   }
 
 //  _patchEntry(formData){

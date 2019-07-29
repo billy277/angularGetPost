@@ -23,6 +23,7 @@ export class GettingComponent implements OnInit {
     console.log("post request to add a new database")
     console.log("database name is: "+ formData.databaseName)
     return this.httpService._postRequest(this.url,{"content": formData.databaseName});
+    
     }  
   
 //get databases
