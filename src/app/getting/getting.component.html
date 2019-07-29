@@ -1,6 +1,15 @@
 <p>getting works!</p>
 <div class = "content">
-  <div *ngFor = 'let identry of getIdData'>Here is the getIDData object:  {{identry.data}}
+    
+    <form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
+        <input type = "text" name = "databaseName" placeholder = "ENTER DATABASE NAME" ngModel>
+        <br/>
+        <!-- <input type = "text" name = "index" placeholder = "index" ngModel>
+        <br/>-->
+        <input type = "submit" value = "submit">
+      </form>
+
+    <div *ngFor = 'let identry of getIdData'>Here is the getIDData object:  {{identry.data}}
     </div>
     <ul>
         <li *ngFor = 'let entry of getData'>
@@ -8,4 +17,5 @@
             -- content: {{entry.content}}
         </li>
     </ul>
+
 </div>

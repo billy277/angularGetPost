@@ -20,20 +20,20 @@ export class HttpService {
     // console.log("updating the changes variable in the service");
     // this.changes = true;
     console.log("inside _post request of the service");
-     return this.httpClient.put( url,obj).subscribe(data => {
+     return this.httpClient.post( url,obj).subscribe(data => {
        console.log("POST was sucessful", data);
       }, error=>{
         console.log("Error", error);
       });  
    }
+   
 
-  //  _putRequest(url, obj){
-  //    return this.httpClient.put(url,obj).subscribe(data=>{
-  //      console.log("PUT Request is sucessful ", data);
-  //    }, error=>{
-  //      console.log("Put error", error);
-  //    });
-  //  }
+   _putRequest(url, obj){
+     console.log("doing a put request");
+     console.log('url inside put req: ' + url,obj);
+     return this.httpClient.put(url,obj,{responseType:"json"}).subscribe(data=>console.log(data));
+     }
+   
    
    _patchRequest(url,index,obj){
       var urlObj = url + '/'+index 

@@ -16,18 +16,16 @@ export class GettingComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
 
-  //This function gets the data
-  _buttonClick2(){
-    console.log("Actually making the request to the service for getidData")
-    return this.httpService._getRequest(this.url2).subscribe((data)=>{
-      console.log(data);
-      this.getIdData = data;
-      console.log(this.getIdData);
-    });  
-  }
+  
 
-
-
+//submit database
+  onClickSubmit(formData){
+    console.log("post request to add a new database")
+    console.log("database name is: "+ formData.databaseName)
+    return this.httpService._postRequest(this.url,{"content": formData.databaseName});
+    }  
+  
+//get databases
   _buttonClick(){
     console.log("Actually making the request to the service")
     return this.httpService._getRequest(this.url).subscribe((data)=>{
@@ -42,7 +40,7 @@ export class GettingComponent implements OnInit {
   ngOnInit() {
     console.log("ngOninit has fired");
     this._buttonClick();
-    this._buttonClick2();
+    
   }
   
   // ngOnChanges(){

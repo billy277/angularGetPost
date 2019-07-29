@@ -1,4 +1,6 @@
 <p>posting works!</p>
+
+
 <form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
     <input type = "text" name = "content" placeholder = "ENTR CONTENT HERE" ngModel>
     <br/>
@@ -6,5 +8,9 @@
     <br/>-->
     <input type = "submit" value = "submit">
   </form>
+  <div *ngFor='let d of getdata'> this is the getdata object 
+    ---id: {{d.id}}
+  ---data: {{d.data}} </div>
+
 <!-- <button (click)="_buttonClick()">PostData</button> -->
 <!-- <button (click)="_patchEntry()">Patch Data</button> -->    
