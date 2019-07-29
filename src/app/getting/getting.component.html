@@ -1,9 +1,9 @@
-
-<!-- 
-<button (click)="_buttonClick()">GetData</button> -->
-
 <p>getting works!</p>
-<div *ngFor = "let article of getData" >
-    <p>{{article.data}}</p>
-    <p>{{article.id}}</p>
+<div class = "content">
+   <ul>
+        <li *ngFor = 'let entry of getData'>
+            -- id: {{entry.id}}
+            -- content: {{entry.content}}
+        </li>
+    </ul>
 </div>

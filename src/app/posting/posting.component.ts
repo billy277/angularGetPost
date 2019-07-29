@@ -12,21 +12,23 @@ export class PostingComponent implements OnInit {
   constructor(private httpService: HttpService) {}
    postingData;
    url = "http://localhost:3000/data"
-  ngOnInit() {
-  }
 
+
+   ngOnInit() {
+  }
+  //this is the function that does the post request to the service
 
   _buttonClick(){
-    console.log("inside button click for post");
+    console.log("making the post request from the posting component to the service");
     this.httpService._postRequest(this.url, this.postingData);
   }
-
+  
+//this is the function that fires when the submit button is clicked
   onClickSubmit(formData){
-    alert('this is the data that will be stored in the Posting Data Variable: ' + formData.input)
-    this.postingData = {"data": formData.input}
-    alert("now the data is being posted to the server");
+    alert('data has been pushed into the postingData variable inside the component');
+    this.postingData = {"content": formData.content};
+    alert("now the _buttonClick function in the posting component is being called");
     this._buttonClick();
-
   }
 
 //  _patchEntry(formData){

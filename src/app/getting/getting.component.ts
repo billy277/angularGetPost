@@ -8,12 +8,26 @@ import { HttpService } from '../http.service';
 })
 export class GettingComponent implements OnInit {
   getData;
+ 
   url = "http://localhost:3000/data"
   constructor(private httpService: HttpService) { }
 
 
+  //This function gets the data
+
+  _buttonClick(){
+    console.log("Actually making the request to the service")
+    return this.httpService._getRequest(this.url).subscribe((data)=>{
+      this.getData = data;
+      console.log(this.getData);
+    });  
+  }
+
+
+  //These functions tell the component when to run the _buttonClick function above
 
   ngOnInit() {
+    this.changes = this.httpService.changes;
     console.log("ngOninit has fired");
     this._buttonClick();
   }
@@ -24,11 +38,8 @@ export class GettingComponent implements OnInit {
 
   }
 
+
   
-  _buttonClick(){
-    return this.httpService._getRequest(this.url).subscribe((data)=>{
-      this.getData = data;
-      console.log(this.getData);
-    });  
-  }
+
+ 
 }
