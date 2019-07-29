@@ -1,8 +1,10 @@
 <p>getting works!</p>
 <div class = "content">
-   <ul>
+  <div *ngFor = 'let identry of getIdData'>Here is the getIDData object:  {{identry.data}}
+    </div>
+    <ul>
         <li *ngFor = 'let entry of getData'>
-            -- id: {{entry.id}}
+            -- the data: {{entry.id}}
             -- content: {{entry.content}}
         </li>
     </ul>

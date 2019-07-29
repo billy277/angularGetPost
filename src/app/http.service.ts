@@ -10,8 +10,9 @@ export class HttpService {
   constructor(private httpClient: HttpClient) {
     
    }
+   
    _getRequest(url){
-     console.log("inside _getRequest() of the service")
+     console.log("inside _getRequest() of the service" + url);
      return this.httpClient.request("GET",url,{responseType:"json"});
    }
   
@@ -19,7 +20,7 @@ export class HttpService {
     // console.log("updating the changes variable in the service");
     // this.changes = true;
     console.log("inside _post request of the service");
-     return this.httpClient.post( url,obj).subscribe(data => {
+     return this.httpClient.put( url,obj).subscribe(data => {
        console.log("POST was sucessful", data);
       }, error=>{
         console.log("Error", error);
