@@ -7,6 +7,9 @@ import { GettingComponent } from './getting/getting.component';
 import { PostingComponent } from './posting/posting.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MaterialModule} from './material-module';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,12 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatSidenavModule,
+    MaterialModule
+  
 
   ],
   providers: [],

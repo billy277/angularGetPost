@@ -1,3 +1,52 @@
-<app-posting></app-posting>
-<app-getting></app-getting>
+<mat-toolbar id="mainToolbar" color="primary">
+    <mat-icon (click)="onToolbarMenuToggle()" id="toolbarMenu">subject</mat-icon>
+    My Awesome App
+    <span class="toolbar-spacer"></span>
+    <mat-icon class="toolbar-icon" matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
+</mat-toolbar>
+
+<mat-sidenav-container id="sidenavContainer">
+    <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen"
+        opened>
+        
+        <mat-list id="menus">
+            <app-posting>   </app-posting>
+            <!-- <mat-list-item>
+                <button class="menu-item" mat-flat-button>
+                    <mat-icon>dashboard</mat-icon>
+                    Dashboard
+                </button>
+            </mat-list-item>
+
+            <mat-list-item>
+                <button class="menu-item"  mat-flat-button>
+                    <mat-icon>work</mat-icon>
+                    Project
+                </button>
+                
+            </mat-list-item>
+
+            <mat-list-item>
+                <button class="menu-item" mat-flat-button>
+                    <mat-icon>settings_application</mat-icon>
+                    Settings
+                </button>
+            </mat-list-item> -->
+
+        </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
+       <app-getting></app-getting>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<mat-toolbar id="footerToolbar" color="primary">
+    Footer Here
+</mat-toolbar>
+
+
+
 <router-outlet></router-outlet>

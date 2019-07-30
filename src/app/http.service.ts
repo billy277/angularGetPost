@@ -12,7 +12,7 @@ export class HttpService {
    }
    
    _getRequest(url){
-     console.log("inside _getRequest() of the service" + url);
+     console.log("inside _getRequest() of the service:  " , url);
      return this.httpClient.request("GET",url,{responseType:"json"});
    }
   
