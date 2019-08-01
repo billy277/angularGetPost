@@ -3,16 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GettingComponent } from './getting/getting.component';
-import { PostingComponent } from './posting/posting.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { Testing2Component } from './testing2/testing2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GettingComponent,
-    PostingComponent
+    Testing2Component,
   ],
   imports: [
     BrowserModule,

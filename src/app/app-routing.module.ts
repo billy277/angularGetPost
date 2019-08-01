@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GettingComponent} from './getting/getting.component';
-import { PostingComponent} from './posting/posting.component';
+import { Testing2Component } from './testing2/testing2.component';
 
 const routes: Routes = [
-  {path:'getting', component: GettingComponent},
-  {path:'posting', component: PostingComponent}
+  {path:'testing', component: Testing2Component},
 ];
 
 @NgModule({
