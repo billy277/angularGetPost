@@ -1,0 +1,12 @@
+{
+    "rds": [
+        {
+            "id": 1,
+            "name": "testdb1"
+        },
+        {
+            "id": 2,
+            "name": "testdb2"
+        }
+    ]
+}
