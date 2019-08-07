@@ -14,8 +14,13 @@
         </tbody>
     </table>
 <p>This is the posting section</p>
-<form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
+<form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value, buttonType)" >
     <input type = "text" name = "content" placeholder = "ENTR CONTENT HERE" ngModel>
     <br/>
-    <input type = "submit" value = "post">
+    <input type = "text" name = "name" placeholder = "ENTR NAME HERE" ngModel>
+    <br/>
+    <input type = "number" name = "id" placeholder = "ENTR id HERE" ngModel>
+    <input type = "submit" (click)="onClickSubmit(login.value,'post')" value = "post">
+    <input type = "submit" (click)="onClickSubmit(login.value,'delete')" value = "delete">
+    <input type = "submit" (click)="onClickSubmit(login.value,'put')" value = "PUT">
   </form>

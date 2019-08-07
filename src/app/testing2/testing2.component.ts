@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { rdsData }  from '../rdsData.module'
+import { rdsData }  from '../rdsData'
 
 @Component({
   selector: 'app-testing2',
@@ -15,18 +15,42 @@ getDatabase;
 postingData;
 
 
-urlDatabaseLocal = "http://localhost:3000/data /"
+urlDatabaseLocal = "http://localhost:3000/data/"
 
   constructor(private httpService : HttpService) { }
   //Post request firing after clicking the POST button - taking in data from the form
-  onClickSubmit(formData){
-    alert("about to make a post request with " +  formData.content);
+  
+  
+  onClickSubmit(formData, buttonType ) {
+    if(buttonType ==='post'){
+      alert("about to make a post request with " +  formData.content);
     
-    
-    // this.postingData = new rdsData(20,formData.Content);
-    this.postingData = {"content": formData.content};
-    console.log("completed the onClickSubmit for posting");
-    return this.httpService._postRequest(this.urlDatabaseLocal, this.postingData);
+      // this.postingData = new rdsData(20,formData.Content);
+      this.postingData = {
+  
+        "content": formData.content,
+        "name":formData.name,
+      };
+      console.log("completed the onClickSubmit for posting  here is posting data:   ", this.postingData);
+      
+      return this.httpService._postRequest(this.urlDatabaseLocal, this.postingData);
+    }
+    if(buttonType==='delete'){
+      alert("about to make a delete request with " + formData.id);
+     let urlDatabaseLocal = this.urlDatabaseLocal + formData.id;
+      return this.httpService._deleteRequest(urlDatabaseLocal);
+    }
+    if(buttonType==='put'){
+      alert("about to make a put request with " + formData.name);
+      let urlDatabaseLocal = this.urlDatabaseLocal + '/'+formData.id;
+      let object = {
+        "content": formData.content,
+        "name": formData.name,
+        "sex":"kept empty"
+      }
+      return this.httpService._putRequest(urlDatabaseLocal, object);
+    }
+   
     
   }
 

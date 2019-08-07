@@ -9,11 +9,11 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class HttpService {
   API_KEY = 'YOUR API KEY';
   // changes;
-httpHeader = {
-  headers: new HttpHeaders({
-    'Content-Type':'application/json'
-  })
-}
+  httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type':'application/json'
+    })
+  }
 
   constructor(private httpClient: HttpClient) {
     
@@ -28,7 +28,7 @@ httpHeader = {
     // console.log("updating the changes variable in the service");
     // this.changes = true;
     console.log("inside _post request of the service");
-     return this.httpClient.post( url,obj,this.httpHeader).subscribe(data => {
+     return this.httpClient.post(url, obj, this.httpHeader).subscribe(data => {
        console.log("POST was sucessful", data);
       }, error=>{
         console.log("Error", error);
@@ -36,11 +36,11 @@ httpHeader = {
    }
    
 
-  //  _putRequest(url, obj){
-  //    console.log("doing a put request");
-  //    console.log('url inside put req: ' + url,obj);
-  //    return this.httpClient.put(url,obj,{responseType:"json"}).subscribe(data=>console.log(data));
-  //    }
+   _putRequest(url, obj){
+     console.log("doing a put request");
+     console.log('url inside put req: ' + url, obj);
+     return this.httpClient.put(url,obj,this.httpHeader).subscribe(data=>console.log(data));
+     }
    
    
   //  _patchRequest(url,index,obj){
@@ -52,4 +52,13 @@ httpHeader = {
   //     console.log("PATCH error", error);
   //   });
   //  }
+
+  _deleteRequest(url){
+    console.log("inside _deleteRequest() of the service" + url);
+    return this.httpClient.delete(url).subscribe(data=>{
+      console.log("delete was sucessful", data);
+    }, error =>{
+      console.log("Error", error);
+    });
+  }
 }
