@@ -1,4 +1,4 @@
-<p>testing2 works!</p>
+<p>this is the getting section!</p>
 <table>
         <thead>
             <tr>
@@ -13,4 +13,9 @@
             </tr>
         </tbody>
     </table>
-
+<p>This is the posting section</p>
+<form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value)" >
+    <input type = "text" name = "content" placeholder = "ENTR CONTENT HERE" ngModel>
+    <br/>
+    <input type = "submit" value = "post">
+  </form>

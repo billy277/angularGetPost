@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { Testing2Component } from './testing2/testing2.component';
+// import { rdsDataModule } from './rdsData.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     Testing2Component,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    // rdsDataModule,
 
   ],
   providers: [],
