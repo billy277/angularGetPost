@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { RdsData } from './rdsData';
 
 @Injectable({
   providedIn: 'root'
@@ -19,20 +21,20 @@ export class HttpService {
     
    }
    
-   _getRequest(url){
+   _getRequest(url: string): Observable<RdsData[]>{
      console.log("inside _getRequest() of the service" + url);
-     return this.httpClient.request("GET",url,this.httpHeader);
+     return this.httpClient.get<RdsData[]>(url,this.httpHeader);
    }
   
+
+
+
+
    _postRequest(url, obj){
     // console.log("updating the changes variable in the service");
     // this.changes = true;
     console.log("inside _post request of the service");
-     return this.httpClient.post(url, obj, this.httpHeader).subscribe(data => {
-       console.log("POST was sucessful", data);
-      }, error=>{
-        console.log("Error", error);
-      });  
+     return this.httpClient.post(url, obj, this.httpHeader);
    }
    
 
