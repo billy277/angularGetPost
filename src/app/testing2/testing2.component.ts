@@ -36,13 +36,13 @@ urlDatabaseLocal = "http://localhost:3000/data/"
       return this.httpService._postRequest(this.urlDatabaseLocal, this.postingData);
     }
     if(buttonType==='delete'){
-      alert("about to make a delete request with " + formData.id);
+      alert("about to make a delete request with id " + formData.id);
      let urlDatabaseLocal = this.urlDatabaseLocal + formData.id;
       return this.httpService._deleteRequest(urlDatabaseLocal);
     }
     if(buttonType==='put'){
-      alert("about to make a put request with " + formData.name);
-      let urlDatabaseLocal = this.urlDatabaseLocal + '/'+formData.id;
+      alert("about to make a put request to change the object with id " + formData.id);
+      let urlDatabaseLocal = this.urlDatabaseLocal +formData.id;
       let object = {
         "content": formData.content,
         "name": formData.name,
