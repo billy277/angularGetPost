@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { RdsDataEntry }  from '../RdsData'
+import { RdsData }  from '../RdsData'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-testing2',
@@ -11,9 +11,10 @@ import { RdsDataEntry }  from '../RdsData'
 
 
 export class Testing2Component implements OnInit {
-getDatabase;
-postingData;
-public rdsData = [];
+getDatabase: any;
+postingData: { "content": any; "name": any; "sex": any; "url": string; };
+public rdsData: Observable<RdsData[]>;
+public rdsDataObjectsArray: RdsData[];
 
 
 
@@ -23,7 +24,7 @@ urlDatabaseLocal = "http://localhost:3000/data/"
   //Post request firing after clicking the POST button - taking in data from the form
   
 
-  onClickSubmit(formData, buttonType ) {
+  onClickSubmit(formData: { content: string; name: string; id: string; }, buttonType: string ) {
     if(buttonType ==='post'){
       alert("about to make a post request with " +  formData.content);
       this.postingData = {
@@ -66,13 +67,15 @@ urlDatabaseLocal = "http://localhost:3000/data/"
   //Get Request Function in a button
   buttonClick3(){
     console.log("Actually making the request to the service for the database");
-    return  this.httpService._getRequest(this.urlDatabaseLocal).subscribe(data=>{
-      this.rdsData = data;
-      console.log("this is the response object we get ", this.rdsData );
-      console.log("type of the array: " ,typeof(this.rdsData));
-      console.log("type of the first entry in the array: ",typeof(this.rdsData[1]));
-    }, error => {console.log("Error", error)});
+      // this.rdsData = this.httpService._getRequest(this.urlDatabaseLocal);
+      this.httpService._getRequest(this.urlDatabaseLocal).subscribe(
+        (data) => {this.rdsDataObjectsArray = data
+          console.log(this.rdsDataObjectsArray);
+        }
+      );
   }
+
+
   
   ngOnInit() {
     console.log("ngOnInit has fired");

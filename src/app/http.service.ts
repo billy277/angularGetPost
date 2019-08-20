@@ -9,6 +9,8 @@ import { RdsData } from './rdsData';
 
 
 export class HttpService {
+  results: Object[];
+
   API_KEY = 'YOUR API KEY';
   // changes;
   httpHeader = {
@@ -18,15 +20,16 @@ export class HttpService {
   }
 
   constructor(private httpClient: HttpClient) {
-    
+    this.results = [];
    }
    
    _getRequest(url: string): Observable<RdsData[]>{
      console.log("inside _getRequest() of the service" + url);
      return this.httpClient.get<RdsData[]>(url,this.httpHeader);
    }
-  
 
+   
+  
 
 
 
