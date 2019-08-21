@@ -9,7 +9,6 @@ import { RdsData } from './rdsData';
 
 
 export class HttpService {
-  results: Object[];
 
   API_KEY = 'YOUR API KEY';
   // changes;
@@ -20,12 +19,14 @@ export class HttpService {
   }
 
   constructor(private httpClient: HttpClient) {
-    this.results = [];
    }
    
+
+  
    _getRequest(url: string): Observable<RdsData[]>{
      console.log("inside _getRequest() of the service" + url);
      return this.httpClient.get<RdsData[]>(url,this.httpHeader);
+     
    }
 
    
@@ -44,7 +45,7 @@ export class HttpService {
    _putRequest(url, obj){
      console.log("doing a put request");
      console.log('url inside put req: ' + url, obj);
-     return this.httpClient.put(url,obj,this.httpHeader).subscribe(data=>console.log(data));
+     return this.httpClient.put(url,obj,this.httpHeader);
      }
    
    

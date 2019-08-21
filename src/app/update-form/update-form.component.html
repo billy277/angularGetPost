@@ -1,0 +1,25 @@
+<p>update-form works!</p>
+<!-- <div *ngFor = "let d of rdsDataObj">  -->
+    <!-- {{d.name}} -->
+    <!-- {{d.id}} -->
+    
+    <form #update="ngForm" (ngSubmit)="onUpdateSubmit(update.value)">
+    Name:<input [(ngModel)]="rdsDataObj.name" type="text" name="name" > data from NgModel says:   {{rdsDataObj.name}}
+    <br />
+    Content:<input [(ngModel)]="rdsDataObj.content" type="text" name="content" > data from NgModel says:   {{rdsDataObj.content}}
+    <br />
+    Sex:<input [(ngModel)]="rdsDataObj.sex" type="number" name="sex"  >data from NgModel says:   {{rdsDataObj.sex}}
+    <br />
+    Url:<input [(ngModel)]="rdsDataObj.url" type="text" name="url"  >data from NgModel says:   {{rdsDataObj.url}}
+    <br />
+    <input type="submit"  value="submit">
+   
+    
+</form>
+
+
+<!-- </div> -->
+<form >
+        <input type="submit" (click)="backToHome()" value="return">
+</form>
+

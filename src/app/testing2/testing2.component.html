@@ -1,26 +1,40 @@
 <p>this is the getting section!</p>
 <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>NAME</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let d of rdsDataObjectsArray ">
-                <th>{{d.id}}</th>
-                <th>{{d.name}}</th>
-            </tr>
-        </tbody>
-    </table>
-<p>This is the posting section</p>
-<form #login = "ngForm" (ngSubmit) = "onClickSubmit(login.value, buttonType)" >
-    <input type = "text" name = "content" placeholder = "ENTR CONTENT HERE" ngModel>
-    <br/>
-    <input type = "text" name = "name" placeholder = "ENTR NAME HERE" ngModel>
-    <br/>
-    <input type = "number" name = "id" placeholder = "ENTR id HERE" ngModel>
-    <input type = "submit" (click)="onClickSubmit(login.value,'post')" value = "post">
-    <input type = "submit" (click)="onClickSubmit(login.value,'delete')" value = "delete">
-    <input type = "submit" (click)="onClickSubmit(login.value,'put')" value = "PUT">
-  </form>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of rdsData | async">
+            <th>{{d.id}}</th>
+            <th>{{d.name}}</th>
+            <a>
+                <form #submission="ngForm">
+                    <input type="submit" (click)="deleteRow(d.id)" value="delete">
+                    <input type="submit" (click)="updateButton([d])" value="update">
+                </form>
+            </a>
+        </tr>
+
+      
+    </tbody>
+</table>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<form #posting="ngForm" (ngSubmit)="onClickSubmit(posting.value)">
+      Name:  <input [(ngModel)]="rdsDataObj.name" type="text" name="name" placeholder="content here" > data from NgModel says: {{rdsDataObj.name}}
+      <br/>
+        Content: <input [(ngModel)]="rdsDataObj.content" type="text" name="content" placeholder="name here"  > data from NgModel says: {{rdsDataObj.content}}
+        <br/>
+        Sex:<input [(ngModel)]="rdsDataObj.sex" type="number" name="sex" placeholder="sex here"  >data from NgModel says: {{rdsDataObj.sex}}
+        <br/>
+        URL:<input [(ngModel)]="rdsDataObj.url" type="text" name="url" placeholder="url here"   >data from NgModel says: {{rdsDataObj.url}}
+        
+        <br/><input type="submit"  value="Create Database">
+</form>

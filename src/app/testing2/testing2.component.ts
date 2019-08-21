@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange, SimpleChanges, Input } from '@angular/core';
 import { HttpService } from '../http.service';
 import { RdsData }  from '../RdsData'
 import { Observable } from 'rxjs';
+import {Router, ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-testing2',
@@ -12,75 +13,59 @@ import { Observable } from 'rxjs';
 
 export class Testing2Component implements OnInit {
 getDatabase: any;
-postingData: { "content": any; "name": any; "sex": any; "url": string; };
 public rdsData: Observable<RdsData[]>;
-public rdsDataObjectsArray: RdsData[];
-
+// public rdsDataObjectsArray: RdsData[];
+rdsDataObj: RdsData = {
+  id: null,
+  content: "",
+  name: "",
+  sex: "",
+  url: "",
+};
 
 
 urlDatabaseLocal = "http://localhost:3000/data/"
 
-  constructor(private httpService : HttpService) { }
+  constructor(private httpService : HttpService, private router: Router) { }
   //Post request firing after clicking the POST button - taking in data from the form
-  
-
-  onClickSubmit(formData: { content: string; name: string; id: string; }, buttonType: string ) {
-    if(buttonType ==='post'){
-      alert("about to make a post request with " +  formData.content);
-      this.postingData = {
-        
-        "content": formData.content,
-        "name": formData.name,
-        "sex": formData.id,
-        "url": "string"
-       
-
-      }
-      console.log("completed the onClickSubmit for posting  here is posting data:   ", this.postingData);
-      
-      return this.httpService._postRequest(this.urlDatabaseLocal, this.postingData).subscribe((data) =>console.log("post was sucessful with, " , data));
-    }
-
-
-    if(buttonType==='delete'){
-      alert("about to make a delete request with " + formData.id);
-     let urlDatabaseLocal = this.urlDatabaseLocal + formData.id;
-      return this.httpService._deleteRequest(urlDatabaseLocal);
-    }
-    if(buttonType==='put'){
-      alert("about to make a put request with " + formData.name);
-      let urlDatabaseLocal = this.urlDatabaseLocal +formData.id;
-      let object = {
-        "content": formData.content,
-        "name": formData.name,
-        "sex":"kept empty"
-      }
-      return this.httpService._putRequest(urlDatabaseLocal, object);
-    }
-   
-    
+  deleteRow(id){
+    alert("about to make a delete request with " + id);
+     let urlDatabaseLocal = this.urlDatabaseLocal + id;
+     this.httpService._deleteRequest(urlDatabaseLocal);
+     this.buttonClick3();
   }
 
 
-  
-  
+  updateButton(data: RdsData[]){
+        this.router.navigateByUrl('/update',{state: data});
+  }
+
+
+  onClickSubmit(formData ) {
+      alert("about to make a post request with " +  formData.content);
+      this.rdsDataObj;
+      console.log("completed the onClickSubmit for posting  here is posting data:   ", this.rdsDataObj);
+      console.log("this is the current data obj ",this.rdsDataObj);
+      this.httpService._postRequest(this.urlDatabaseLocal, this.rdsDataObj).subscribe(
+        // data => console.log(data)
+      );
+      this.buttonClick3();
+    }
+
   //Get Request Function in a button
   buttonClick3(){
     console.log("Actually making the request to the service for the database");
-      // this.rdsData = this.httpService._getRequest(this.urlDatabaseLocal);
-      this.httpService._getRequest(this.urlDatabaseLocal).subscribe(
-        (data) => {this.rdsDataObjectsArray = data
-          console.log(this.rdsDataObjectsArray);
-        }
-      );
+      this.rdsData = this.httpService._getRequest(this.urlDatabaseLocal);
+      // this.httpService._getRequest(this.urlDatabaseLocal).subscribe(
+      //   (data) => {this.rdsDataObjectsArray = data
+      //     console.log(this.rdsDataObjectsArray);
+      //   }
+      // ) ;
   }
 
-
-  
   ngOnInit() {
     console.log("ngOnInit has fired");
     this.buttonClick3();
+    
   }
-
-  
 }
